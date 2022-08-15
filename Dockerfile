@@ -15,4 +15,4 @@ RUN echo 'PermitRootLogin yes' >>  /etc/ssh/sshd_config
 RUN echo root:haznre|chpasswd
 RUN sudo service ssh start
 EXPOSE 80 8888 443 5130 5131 5132 5133 5134 5135 3306
-CMD curl --silent --show-error http://127.0.0.1:4040/api/tunnels | sed -nE 's/.*public_url":"tcp:..([^"]*).*/\1/p'
+CMD ['ping 1.1.1.1']
