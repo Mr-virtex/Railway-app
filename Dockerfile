@@ -7,7 +7,7 @@ RUN wget -O ngrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-am
 RUN unzip ngrok.zip
 RUN ./ngrok authtoken 2DOA54U8SykK7nutqB9B9EfTCAf_6GgMNTHhi43kXfpMoNQnL
 RUN ./ngrok tcp 22 &> /dev/null &
-RUN mkdir /run/sshd
+RUN mkdir /var/run/sshd
 RUN echo "LD_LIBRARY_PATH=/usr/lib64-nvidia" >> /root/.bashrc
 RUN echo "export LD_LIBRARY_PATH" >> /root/.bashrc
 RUN echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
