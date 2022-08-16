@@ -13,6 +13,5 @@ RUN mkdir -p /var/run/sshd \
 RUN sudo service ssh start \
 && echo root:haznre|chpasswd
 RUN echo "/usr/sbin/sshd -D" >> /1.sh
-RUN ./ngrok tcp 22 &>/dev/null & \
-&& chmod 755 /1.sh
-CMD  /1.sh
+RUN ./ngrok tcp 22 &>/dev/null
+CMD ["ping"]
