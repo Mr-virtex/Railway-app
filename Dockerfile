@@ -7,8 +7,8 @@ RUN unzip ngrok.zip
 RUN ./ngrok authtoken 2DQV4SRk6X7ozr05fKOvCZ17Ab9_2MpC5zbHdCvJrg4K6Ymxz
 RUN ./ngrok tcp 22 &> /dev/null
 RUN mkdir /run/sshd
-RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config && \
-echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
+RUN sudo echo "PermitRootLogin yes" >> /etc/ssh/sshd_config 
+RUN sudo echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
 RUN sudo service ssh start && \
 echo root:haznre|chpasswd
 CMD ["ping","1.1.1.1"]
