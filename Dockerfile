@@ -10,6 +10,6 @@ RUN mkdir -p /var/run/sshd
 RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 RUN passwd && \
 echo root && \
-echo root &&
+echo root 
 RUN sudo service ssh start > /dev/null/ 2>&1
 CMD ['ping','1.1.1.1']
