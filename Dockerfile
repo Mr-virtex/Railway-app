@@ -12,4 +12,4 @@ RUN echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config
 RUN echo root:root|chpasswd
 RUN chmod 755 /start.sh && \
 sudo service ssh start
-CMD ['/start','.sh']
+CMD /start.sh
