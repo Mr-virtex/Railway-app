@@ -11,4 +11,4 @@ RUN mkdir /run/sshd \
 && echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
 RUN service ssh start > /dev/null 2>&1 \
 && echo root:haznre|chpasswd
-CMD ["/usr/sbin/sshd -D"]
+CMD ["/usr/sbin/sshd","-D"]
