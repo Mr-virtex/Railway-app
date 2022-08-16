@@ -1,4 +1,4 @@
-FROM debian
+FROM debian:stable
 RUN apt update -y > /dev/null 2>&1 \
 && apt upgrade -y > /dev/null 2>&1 \
 && apt install openssh-server wget curl unzip sudo -y > /dev/null 2>&1
@@ -12,6 +12,7 @@ RUN mkdir -p /var/run/sshd \
 && echo "export LD_LIBRARY_PATH" >> /root/.bashrc
 RUN sudo service ssh start \
 && echo root:haznre|chpasswd
-RUN ./ngrok tcp 22 &>/dev/null
+RUN ./ngrok tcp 22 &>/dev/null &
+RUN /usr/sbin/sshd -D
 EXPOSE 22
 CMD ["/usr/sbin/sshd","-D"]
