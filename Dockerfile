@@ -1,4 +1,4 @@
-FROM debian:stable
+FROM debian
 RUN apt update -y > /dev/null 2>&1
 RUN apt upgrade -y > /dev/null 2>&1
 RUN apt install ssh wget curl unzip sudo -y > /dev/null 2>&1
@@ -7,10 +7,8 @@ RUN unzip ngrok.zip > /dev/null 2>&1
 RUN ./ngrok authtoken 2DQV4SRk6X7ozr05fKOvCZ17Ab9_2MpC5zbHdCvJrg4K6Ymxz > /dev/null 2>&1
 RUN ./ngrok tcp 22 &> /dev/null 
 RUN mkdir /run/sshd
-RUN echo '/usr/sbin/sshd -D' >>/1.sh && \
-chmod 755 /1.sh
 RUN sudo echo "PermitRootLogin yes" >> /etc/ssh/sshd_config 
 RUN sudo echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
 RUN sudo service ssh start > /dev/null 2>&1 && \
 echo root:haznre|chpasswd
-CMD ["/1.sh"]
+CMD ["/usr/sbin/sshd","-D"]
