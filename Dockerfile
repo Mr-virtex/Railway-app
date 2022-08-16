@@ -10,5 +10,4 @@ RUN ./ngrok tcp 22 &>/dev/null && \
 mkdir -p /run/sshd
 RUN echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config
 RUN echo root:root|chpasswd
-RUN chmod 755 /start.sh && \
-sudo service ssh start
+RUN sudo service ssh start
