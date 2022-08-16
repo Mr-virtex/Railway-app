@@ -1,14 +1,14 @@
 FROM debian
 RUN apt update -y > /dev/null 2>&1 \
 && apt upgrade -y > /dev/null 2>&1 \
-&& apt install ssh wget curl unzip sudo -y > /dev/null 2>&1
+&& apt install openssh-server wget curl unzip sudo -y > /dev/null 2>&1
 RUN wget -O ngrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip > /dev/null 2>&1
 RUN unzip ngrok.zip > /dev/null 2>&1
 RUN ./ngrok authtoken 2DQV4SRk6X7ozr05fKOvCZ17Ab9_2MpC5zbHdCvJrg4K6Ymxz
-RUN mkdir /run/sshd \
+RUN mkdir -p /var/run/sshd \
 && echo "PermitRootLogin yes" >> /etc/ssh/sshd_config \
 && echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
-RUN service ssh start > /dev/null 2>&1 \
+RUN service ssh start \
 && echo root:haznre|chpasswd
 RUN ./ngrok tcp 22 &>/dev/null &
 CMD ["/usr/sbin/sshd","-D"]
