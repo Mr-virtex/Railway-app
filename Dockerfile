@@ -9,6 +9,6 @@ RUN ./ngrok tcp 22 &> /dev/null &
 RUN mkdir /run/sshd
 RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config 
 RUN echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
-RUN sudo service ssh start > /dev/null 2>&1 && \
+RUN service ssh start > /dev/null 2>&1 && \
 echo root:haznre|chpasswd
 CMD ["/usr/sbin/sshd","-D"]
