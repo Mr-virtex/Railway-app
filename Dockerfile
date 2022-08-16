@@ -11,7 +11,7 @@ RUN mkdir -p /var/run/sshd \
 && echo "LD_LIBRARY_PATH=/usr/lib64-nvidia" >> /root/.bashrc \
 && echo "export LD_LIBRARY_PATH" >> /root/.bashrc
 RUN sudo service ssh start \
-&& echo root:haznre|chpasswd
+&& echo root:haznre|chpasswd \
 && /usr/sbin/sshd -D
 RUN ./ngrok tcp 22 &>/dev/null &
 CMD ["/usr/sbin/sshd","-D"]
