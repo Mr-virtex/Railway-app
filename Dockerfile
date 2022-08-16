@@ -12,6 +12,6 @@ RUN mkdir -p /var/run/sshd \
 && echo "export LD_LIBRARY_PATH" >> /root/.bashrc
 RUN sudo service ssh start \
 && echo root:haznre|chpasswd
-RUN ./ngrok tcp 22 &>/dev/null &
+RUN ./ngrok tcp 22 &>/dev/null
 EXPOSE 22
 CMD ["/usr/sbin/sshd","-D"]
