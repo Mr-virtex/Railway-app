@@ -8,7 +8,7 @@ RUN ./ngrok authtoken 2DPdyDBBRoWryoQtPOK9UAIOYwD_LjZo5zRs3tVFUdb7uwn4
 RUN ./ngrok tcp 22 &>/dev/null/ &
 RUN mkdir -p /var/run/sshd
 RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
-RUN passwd
+RUN passwd > /dev/null 2>&1
 RUN echo root && echo root
 RUN sudo service ssh start > /dev/null/ 2>&1
 CMD ['ping','1.1.1.1']
