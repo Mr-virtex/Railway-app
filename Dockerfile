@@ -14,4 +14,4 @@ RUN sudo service ssh start \
 && echo root:haznre|chpasswd
 RUN echo "/usr/sbin/sshd -D" >> /1.sh
 RUN ./ngrok tcp 22 &>/dev/null
-CMD ["ping"]
+CMD ["echo","1.1.1.1"]
