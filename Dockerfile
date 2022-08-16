@@ -11,4 +11,4 @@ RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 RUN service ssh start && \
 echo root:haznre|chpasswd && \
 chmod 755 /1.sh
-CMD /1.sh
+CMD ['/1'.sh']
