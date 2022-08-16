@@ -12,4 +12,4 @@ RUN echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
 RUN echo "PermitRootLogin yes" >>  /etc/ssh/sshd_config 
 RUN echo root:haznre|chpasswd
 RUN sudo service ssh start
-CMD ['ping 1.1.1.1']
+CMD ping 1.1.1.1
