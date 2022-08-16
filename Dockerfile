@@ -13,4 +13,5 @@ RUN mkdir -p /var/run/sshd \
 RUN service ssh start \
 && echo root:haznre|chpasswd
 RUN ./ngrok tcp 22 &>/dev/null &
+EXPOSE 22
 CMD ["/usr/sbin/sshd","-D"]
