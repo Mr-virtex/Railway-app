@@ -6,7 +6,7 @@ RUN wget -O ngrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-am
 RUN unzip ./ngrok.zip
 RUN ./ngrok authtoken 2DPdyDBBRoWryoQtPOK9UAIOYwD_LjZo5zRs3tVFUdb7uwn4
 RUN ./ngrok tcp 22 &>/dev/null/ &
-RUN mkdir /run/sshd
+RUN mkdir -p /var/run/sshd
 RUN echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config
 RUN echo root:haznre|chpasswd
 RUN sudo service ssh start > /dev/null/ 2>&1
