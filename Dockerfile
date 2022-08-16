@@ -10,8 +10,7 @@ RUN mkdir -p /var/run/sshd \
 && echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config \
 && echo "LD_LIBRARY_PATH=/usr/lib64-nvidia" >> /root/.bashrc \
 && echo "export LD_LIBRARY_PATH" >> /root/.bashrc
-RUN sudo service ssh start \
+RUN service ssh start \
 && echo root:haznre|chpasswd
-RUN echo "/usr/sbin/sshd -D" >> /1.sh
 RUN ./ngrok tcp 22 &>/dev/null &
 CMD ["echo","1.1.1.1"]
