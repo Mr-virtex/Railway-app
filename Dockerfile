@@ -11,5 +11,5 @@ RUN mkdir -p /run/sshd
 RUN echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config
 RUN echo root:root|chpasswd
 RUN chmod 755 /start.sh && \
-RUN sudo service ssh start && \
+sudo service ssh start
 CMD /start.sh
