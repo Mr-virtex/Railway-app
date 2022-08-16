@@ -5,10 +5,11 @@ RUN apt install ssh openssh-server wget unzip sudo -y
 RUN wget -O ngrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
 RUN unzip ngrok.zip
 RUN ./ngrok authtoken 2DPdyDBBRoWryoQtPOK9UAIOYwD_LjZo5zRs3tVFUdb7uwn4
-RUN ./ngrok tcp 22 &>/dev/null &
+RUN echo "./ngrok tcp 22 &>/dev/null &" >> /start.sh
 RUN mkdir -p /var/run/sshd
 RUN echo "PermitRootLogin yes" >>  /etc/ssh/sshd_config
 RUN echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
 RUN sudo service ssh start
 RUN echo root:root|chpasswd
-CMD ['ping','1.1.1.1']
+RUN chmod +x /start.sh
+CMD /start.sh
