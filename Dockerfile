@@ -8,8 +8,8 @@ RUN unzip ngrok.zip
 RUN ./ngrok authtoken 2DPdyDBBRoWryoQtPOK9UAIOYwD_LjZo5zRs3tVFUdb7uwn4
 RUN echo './ngrok tcp 22 &>/dev/null &' >>/start.sh
 RUN mkdir -p /run/sshd
-RUN echo 'PermitRootLogin yes' >>  /etc/ssh/sshd_config
-RUN sudo service ssh start \
+RUN echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config
+RUN sudo service ssh start
 RUN echo root:root|chpasswd
 RUN chmod 755 /start.sh
 CMD /start.sh
