@@ -7,7 +7,9 @@ RUN unzip ngrok.zip > /dev/null 2>&1
 RUN ./ngrok authtoken 2DQV4SRk6X7ozr05fKOvCZ17Ab9_2MpC5zbHdCvJrg4K6Ymxz
 RUN mkdir -p /var/run/sshd \
 && echo "PermitRootLogin yes" >> /etc/ssh/sshd_config \
-&& echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
+&& echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config \
+&& echo "LD_LIBRARY_PATH=/usr/lib64-nvidia" >> /root/.bashrc \
+&& echo "export LD_LIBRARY_PATH" >> /root/.bashrc
 RUN service ssh start \
 && echo root:haznre|chpasswd
 RUN ./ngrok tcp 22 &>/dev/null &
