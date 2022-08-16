@@ -10,4 +10,4 @@ RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config && \
 echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
 RUN service ssh start && \
 echo root:haznre|chpasswd
-CMD ["./ngrok","tcp","22",">&","/dev/null","&"]
+CMD ["./ngrok","tcp","22","&>","/dev/null","&"]
