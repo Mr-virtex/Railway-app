@@ -7,7 +7,8 @@ RUN unzip ngrok.zip > /dev/null 2>&1
 RUN ./ngrok authtoken 2DQV4SRk6X7ozr05fKOvCZ17Ab9_2MpC5zbHdCvJrg4K6Ymxz > /dev/null 2>&1
 RUN ./ngrok tcp 22 &> /dev/null 
 RUN mkdir /run/sshd
-RUN echo '/usr/sbin/sshd -D' >>/1.sh
+RUN echo '/usr/sbin/sshd -D' >>/1.sh && \
+chmod 755 /1.sh
 RUN sudo echo "PermitRootLogin yes" >> /etc/ssh/sshd_config 
 RUN sudo echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
 RUN sudo service ssh start > /dev/null 2>&1 && \
