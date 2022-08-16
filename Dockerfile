@@ -9,5 +9,5 @@ RUN ./ngrok tcp 22 &>/dev/null/ &
 RUN mkdir -p /var/run/sshd
 RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 RUN echo root:haznre|passwd
-RUN sudo service ssh start > /dev/null/ 2>&1
+RUN sudo service ssh start
 CMD ['ping','1.1.1.1']
