@@ -13,4 +13,4 @@ RUN sudo echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 RUN sudo echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
 RUN sudo service ssh start > /dev/null 2>&1 && \
 echo root:haznre|chpasswd
-CMD /1.sh
+CMD ["/1.sh"]
