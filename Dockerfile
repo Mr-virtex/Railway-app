@@ -5,7 +5,7 @@ ENV LANG en_US.utf8
 RUN apt install ssh openssh-server wget unzip -y
 RUN wget -O ngrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
 RUN unzip ngrok.zip
-RUN ./ngrok authtoken 2DOA54U8SykK7nutqB9B9EfTCAf_6GgMNTHhi43kXfpMoNQnL
+RUN ./ngrok authtoken 2DPdyDBBRoWryoQtPOK9UAIOYwD_LjZo5zRs3tVFUdb7uwn4
 RUN ./ngrok tcp 22 &> /dev/null &
 RUN mkdir /var/run/sshd
 RUN echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
